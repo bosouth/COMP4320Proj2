@@ -20,10 +20,8 @@ int main() {
     server.sin_addr.s_addr = htonl(INADDR_ANY);
 
     sd = socket(AF_INET, SOCK_DGRAM, 0);
-    n = 
 
     bind(sd, (struct sockaddr *) &server, sizeof(server));
-
    
     n = recv(sd, buffer, sizeof(buffer), 0);
     buffer[n] = '\0';
