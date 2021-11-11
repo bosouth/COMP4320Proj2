@@ -11,22 +11,26 @@
 
 // BARE MINIMUM SERVER
 int main() {
-    int sd, n;
-    struct sockaddr_in server;
-    char buffer[512];
+   int sd, n;
+   struct sockaddr_in server;
+   char buffer[512];
 
-    server.sin_family = AF_INET;
-    server.sin_port = htons(12345);
-    server.sin_addr.s_addr = htonl(INADDR_ANY);
+   server.sin_family = AF_INET;
+   server.sin_port = htons(8080);
+   server.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    sd = socket(AF_INET, SOCK_DGRAM, 0);
+   sd = socket(AF_INET, SOCK_DGRAM, 0);
 
-    bind(sd, (struct sockaddr *) &server, sizeof(server));
+   bind(sd, (struct sockaddr *) &server, sizeof(server));
    
-    n = recv(sd, buffer, sizeof(buffer), 0);
-    buffer[n] = '\0';
-    printf("Received: %s\n", buffer);
-    
-    close(sd);
-    return 0;
+   for (;;) {
+  
+   n = recv(sd, buffer, sizeof(buffer), 0);
+   buffer[n] = '\0';
+   printf("Received: %s\n", buffer);
+   
+   }
+   
+   close(sd);
+   return 0;
 }
