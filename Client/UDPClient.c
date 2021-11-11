@@ -17,6 +17,9 @@ int startTime = 0, timerOverload = 5000;
 int mutexSocketLock = 0; // Prevents multiple threads from becoming socket timer
 
    // RUN TIMER FOR PACKET ACK OR NAK
+   // Refrences for thread timers: https://www.section.io/engineering-education/fork-in-c-programming-language/
+   // https://www.geeksforgeeks.org/fork-system-call/
+   // https://www.tutorialspoint.com/multithreading-in-c
 void packetTimer(int timerMax, int seqNum)
 {
    clock_t before = clock(); // We want to start the clock
